@@ -1,0 +1,16 @@
+/* reset.css - 重置默认样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    left: 0;
+    top: 0;
+    background-color: #191919;
+    color: #eee;
+    position: relative;
+    overflow-x: hidden;
+}

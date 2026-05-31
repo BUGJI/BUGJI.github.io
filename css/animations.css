@@ -1,0 +1,32 @@
+/* animations.css - 动画效果 */
+
+/* 旋转动画 */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.square-content .decoration {
+    animation: rotate 10s linear infinite;
+}
+
+/* 内容淡入动画 */
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+main, footer {
+    opacity: 0;
+    animation: fadeInContent 0.5s ease-in 0.3s forwards;
+}

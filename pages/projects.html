@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目 - 我的作品集</title>
+    <style>
+        /* 项目页专属样式 - 网格布局 */
+        .projects-container {
+            min-height: 100vh;
+            background: #0f0f1a;
+            padding: 100px 60px;
+        }
+        
+        .projects-nav {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            display: flex;
+            gap: 20px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            z-index: 100;
+        }
+        
+        .projects-nav a {
+            color: #eee;
+            text-decoration: none;
+            padding: 5px 12px;
+            cursor: pointer;
+        }
+        
+        .projects-nav a.active {
+            background: #00d9ff;
+            border-radius: 20px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .project-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #00d9ff, #00ff88);
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .projects-corner {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #00d9ff;
+            z-index: 101;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="projects-corner">BUGCODE</div> -->
+    
+    <div class="projects-nav">
+        <a data-page="main">首页</a>
+        <a data-page="about">关于</a>
+        <a data-page="projects" class="active">项目</a>
+        <a data-page="contact">联系</a>
+    </div>
+    
+    <div class="projects-container">
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image"></div>
+                <div class="project-info">
+                    <h3>项目一</h3>
+                    <p>一个创新的Web应用</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #ff6b6b, #ff8e53);"></div>
+                <div class="project-info">
+                    <h3>项目二</h3>
+                    <p>移动端App设计</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #a8edea, #fed6e3);"></div>
+                <div class="project-info">
+                    <h3>项目三</h3>
+                    <p>数据可视化工具</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.querySelectorAll('.projects-nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.getAttribute('data-page');
+                if (page && window.router) window.router.loadPage(page);
+            });
+        });
+    </script>
+</body>
+</html>

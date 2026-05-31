@@ -1,0 +1,24 @@
+/* responsive.css - 响应式布局 */
+
+/* 移动端隐藏左侧正方形 */
+@media (max-width: 768px) {
+    .square-left {
+        display: none;
+    }
+    
+    .content-right {
+        width: 100%;
+        padding: 60px 30px;
+    }
+}
+
+/* 平板适配（小屏幕但大于768px） */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .square-content h2 {
+        font-size: 1.8em;
+    }
+    
+    .content-right {
+        padding: 60px 30px;
+    }
+}

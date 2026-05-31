@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页 - 我的作品集</title>
+    <style>
+        /* 第一页专属样式 */
+        .home-container {
+            display: flex;
+            min-height: 100vh;
+            background-color: #191919;
+            height: 100vh;
+        }
+        
+        /* 左侧正方形区域 */
+        .home-square-left {
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+        }
+        
+        .home-square-content {
+            text-align: center;
+            padding: 40px;
+        }
+        
+        
+        .home-square-content p {
+            color: #aaa;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+        
+        .home-decoration {
+            width: 400px;
+            height: 300px;
+            margin: 30px auto;
+            border: 1px solid #eee;
+            animation: expand-home-decoration 1.5s ease-out forwards;
+            text-align: left;
+            overflow: hidden;
+            white-space: nowrap;
+            word-break: keep-all;
+            color:#eee;
+            font-family: 'consolas', monospace;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+        }
+
+        .home-terminal-content {
+            word-break: keep-all;
+            white-space: nowrap;
+            overflow: hidden;
+            padding: 5px;
+            height: calc(100% - 30px); /* 减去标题栏高度 */
+            scroll-behavior: auto; /* 禁用平滑滚动 */
+            width: 100%;
+            white-space: nowrap;
+        }
+
+        @keyframes expand-home-decoration {
+            1% {
+                width: 0px;
+                height: 0px;
+            }
+            100% {
+                width: 400px;
+                height: 300px;
+            }
+        }
+
+        
+        /* 右侧内容区域 */
+        .home-content-right {
+            width: 600px;
+            padding: 80px 40px;
+            min-height: 100vh;
+        }
+        
+        /* 导航菜单 */
+        .home-nav {
+            margin-top: 40px;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+        }
+        
+        .home-nav a {
+            color: #eee;
+            text-decoration: none;
+            padding: 5px 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.9em;
+            border: 1px dashed #00000000;
+        }
+        
+        .home-nav a:hover {
+            border: 1px dashed rgb(57, 57, 57);
+            background: #bbb;
+            color: #111;
+        }
+        
+        .home-nav a.active {
+            background: #262626;
+            color: white;
+        }
+        
+        /* 主内容样式 */
+        .home-main {
+            padding: 0;
+            min-height: auto;
+        }
+        
+        .home-footer {
+            margin-top: 60px;
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .home-square-left {
+                display: none;
+            }
+            .home-content-right {
+                width: 100%;
+                padding: 60px 30px;
+            }
+            #movingText{
+                opacity: 0;
+            }
+            .home-nav {
+                top: 10px;
+                right: 15px;
+                gap: 10px;
+                padding: 8px 15px;
+            }
+        }
+        
+        /* 左上角文字 */
+        .home-corner-logo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #eee;
+            letter-spacing: 4px;
+            z-index: 101;
+            pointer-events: none;
+
+        }
+        
+        .home-decoration .content{
+            margin: 0;
+            padding: 0;
+            animation: typing 3s steps(40) forwards;
+        }
+        #terminal-input {
+            background-color: #0000;
+            color: #eee;
+            border: none;
+            outline: none;
+            font-family: monospace;
+            flex-grow: 1;
+            font-family: consolas;
+            font-size: 15px;
+            margin: -1px 0px -1px 2px;
+        }
+        .home-nav-extra {
+            font-size: 1em;
+        }
+        .home-nav-extra p{
+            margin-top: 10px;
+        }
+        .home-nav-extra a{
+            color: #eee; text-decoration: none;
+            margin: 0;
+            padding:0;
+        }
+        .home-nav-social{
+            text-align: right;
+            margin-top: 10px;
+        }
+        .home-nav-social a {
+            color: #eee;
+            font-size: 1.3em;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- <div class="home-corner-logo">BUGCODE</div> -->
+    
+    <div class="home-container">
+        <!-- 左侧正方形区域 -->
+        <div class="home-square-left">
+            <div class="home-square-content">
+                <div class="home-decoration">
+                    <div style="border-bottom: 1px solid #eee; width: 100%; padding: 5px">▶ BUGJI : bash - console</div>
+                    <div style="word-break: keep-all; white-space: nowrap; overflow: hidden; padding: 5px;" class="home-terminal-content">
+                        <div class="content">Welcome To BUGJI's Home (Version 1.0 H)</div>
+                        <br>
+                        <div class="content">┌─(BUGJI@bugcode.cc)</div>
+                        <div class="content">└$ <input id="terminal-input" autofocus></div>
+                    </div>
+                </div>
+                <p>终端</p>
+            </div>
+        </div>
+        
+        <!-- 右侧内容区域 -->
+        <div class="home-content-right">
+            <div class="home-main">
+                <div style="font-size: 2em; margin-bottom: 20px;">欢迎来到BUGCODE</div>
+                <div style="color: #aaa; line-height: 1.6;">
+                    <p>这里展示了我的创意作品和技术探索。</p>
+                    <p>每个页面都可以有完全不同的布局和设计！</p>
+                    <div class="home-nav">
+                        <a class="active">首页</a>
+                        <a data-page="about">关于</a>
+                        <a data-page="projects">项目</a>
+                        <a data-page="contact">联系</a>
+                    </div>
+                    
+                    
+                    <div style="background: rgba(255,255,255,0.05); padding: 20px; margin-top: 30px; border-radius: 12px; flex: 1;" class="home-nav-extra">
+                        <h3>🚀 个人导航</h3>
+                        <p>
+                            <a href="http://blog.bugcode.cc/" target="_blank" >个人博客</a> 
+                            <span> · 技术类博客</span>
+                        </p>
+                        <p>
+                            <a href="http://bugcode.cc/adofai/" target="_blank" >ADOFAI工具箱</a>
+                            <span> · 一个谱面的工具集合站</span>
+                        </p>
+                        <p>
+                            <a href="http://wyapi.bugcode.cc/" target="_blank" >网易云音乐</a>
+                            <span> · 下载歌曲源文件</span>
+                        </p>
+                        <p>
+                            <a href="https://qm.qq.com/cgi-bin/qm/qr?k=BixrGd63CrHhe5oawoEGtXQSSSn8sJcT&jump_from=webapi&authKey=rIqkvqkIBOgiN4tqh9n6mRW3MyJn4P/cYp+Q11D9aYJj54BbLsXW0QlMTYuK+Uan" target="_blank" >加入QQ群</a>
+                            <span> · 群号：835382474</span>
+                        </p>
+                        
+                    </div>
+                    <div class="home-nav-social">
+                        <a href="https://www.douyin.com/user/MS4wLjABAAAAsr6HS6L61cvjvMmKSqPvciTtAJg9xH3ELdiZYje7o4U" target="_blank" aria-label="Tiktok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://space.bilibili.com/1057790493" target="_blank" aria-label="Bilibili"><i class="fab fa-bilibili"></i></a>
+                        <a href="https://github.com/BUGJI" target="_blank" aria-label="Github"><i class="fab fa-github"></i></a>
+                        <a href="https://afdian.com/a/bugcode" target="_blank" aria-label="store"><i class="fa-solid fa-store "></i></a>
+                        <a href="https://x.com/BUGJI214786" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.youtube.com/@BUGJI-ej2zk" target="_blank" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="home-footer">
+                <p>&copy; 2026 BUGJI</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 修改动画结束监听部分
+        const decoration = document.querySelector('.home-decoration');
+        const terminalContent = document.querySelector('.home-terminal-content');
+
+        decoration.addEventListener('animationend', () => {
+            // 重置滚动位置到左上角
+            if (terminalContent) {
+                terminalContent.scrollLeft = 0;
+                terminalContent.scrollTop = 0;
+            }
+            const terminalInput = document.getElementById('terminal-input');
+            if (terminalInput) {
+                terminalInput.focus();
+            }
+        });
+    </script>
+    <script>
+        const container = document.querySelector('.home-decoration');
+        const content = document.querySelector('.home-square-content');
+
+        // 添加过渡效果（关键修复）
+        content.style.transition = 'transform 0.3s ease-out';
+        
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            
+            // 计算鼠标相对于容器的位置 (0-1 范围)
+            const mouseX = (e.clientX - rect.left) / rect.width;
+            const mouseY = (e.clientY - rect.top) / rect.height;
+            
+            // 计算倾斜角度（最大倾斜 ±15 度）
+            const maxTilt = 15;
+            const rotateY = (mouseX - 0.5) * maxTilt * 2;  // 左右倾斜
+            const rotateX = (0.5 - mouseY) * maxTilt * 2;  // 上下倾斜
+            
+            // 应用 3D 变换，移动时移除过渡以保持跟手感
+            content.style.transition = 'transform 0.05s linear';
+            content.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        container.addEventListener('mouseleave', () => {
+            // 鼠标离开时恢复平滑过渡并复位
+            content.style.transition = 'transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+            content.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+        });
+
+    </script>
+    <script>
+        // 设置输入框焦点
+        window.addEventListener('DOMContentLoaded', () => {
+            const terminalInput = document.getElementById('terminal-input');
+            
+            // 监听动画结束事件，在动画完成后获得焦点
+            const decoration = document.querySelector('.home-decoration');
+            decoration.addEventListener('animationend', () => {
+                terminalInput.focus();
+            });
+        });
+
+        // 原有的鼠标倾斜交互代码
+        const containerd = document.querySelector('.home-decoration');
+        const content = document.querySelector('.home-square-content');
+
+        content.style.transition = 'transform 0.3s ease-out';
+        
+        containerd.addEventListener('mousemove', (e) => {
+            const rect = containerd.getBoundingClientRect();
+            const mouseX = (e.clientX - rect.left) / rect.width;
+            const mouseY = (e.clientY - rect.top) / rect.height;
+            const maxTilt = 15;
+            const rotateY = (mouseX - 0.5) * maxTilt * 2;
+            const rotateX = (0.5 - mouseY) * maxTilt * 2;
+            content.style.transition = 'transform 0.05s linear';
+            content.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        containerd.addEventListener('mouseleave', () => {
+            content.style.transition = 'transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1)';
+            content.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+        });
+    </script>
+</body>
+</html>

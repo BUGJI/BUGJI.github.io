@@ -1,0 +1,114 @@
+/* common.css - 全局公共样式（优化版） */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #191919;
+    color: #eee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+}
+
+/* 边缘阴影 - 全局效果 */
+.edge-shadow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9998;
+    box-shadow: inset 0 0 120px 0 rgba(0, 0, 0, 0.4);
+    background: radial-gradient(
+        circle at center center,
+        transparent 70%,
+        rgba(0, 0, 0, 0.3) 100%
+    );
+}
+
+/* 页面加载蒙层背景 - 仅首次加载 */
+.page-overlay-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: #0e0e0e;
+    transition: opacity 0.6s ease-out;
+    opacity: 1;
+}
+
+.page-overlay-bg.hide {
+    opacity: 0;
+}
+
+/* 蒙层中的文字 - 仅首次加载 */
+.page-overlay .moving-text {
+    position: fixed;
+    font-size: 3em;
+    font-weight: bold;
+    color: #eee;
+    letter-spacing: 4px;
+    white-space: nowrap;
+    z-index: 10000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-overlay .moving-text.move-to-corner {
+    top: 20px;
+    left: 20px;
+    transform: translate(0, 0);
+    font-size: 1.5em;
+}
+
+.page-overlay .moving-text.hide {
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+}
+
+/* 全局左上角文字 */
+.corner-logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #eee;
+    letter-spacing: 4px;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease-out;
+}
+
+.corner-logo.show {
+    opacity: 0.8;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(102, 126, 234, 0.5);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(102, 126, 234, 0.8);
+}

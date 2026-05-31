@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系 - 我的作品集</title>
+    <style>
+        .contact-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .contact-nav {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            display: flex;
+            gap: 20px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            z-index: 100;
+        }
+        
+        .contact-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 12px;
+            cursor: pointer;
+        }
+        
+        .contact-nav a.active {
+            background: #f39c12;
+            border-radius: 20px;
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            max-width: 500px;
+            width: 100%;
+            color: #333;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .contact-card h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        
+        .contact-corner {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            z-index: 101;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        button {
+            background: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="contact-corner">BUGCODE</div> -->
+    
+    <div class="contact-nav">
+        <a data-page="main">首页</a>
+        <a data-page="about">关于</a>
+        <a data-page="projects">项目</a>
+        <a data-page="contact" class="active">联系</a>
+    </div>
+    
+    <div class="contact-container">
+        <div class="contact-card">
+            <h2>联系我</h2>
+            <p>有任何问题或合作意向，欢迎联系！</p>
+            <form>
+                <input type="text" placeholder="姓名">
+                <input type="email" placeholder="邮箱">
+                <textarea rows="4" placeholder="消息"></textarea>
+                <button>发送消息</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        document.querySelectorAll('.contact-nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.getAttribute('data-page');
+                if (page && window.router) window.router.loadPage(page);
+            });
+        });
+    </script>
+</body>
+</html>

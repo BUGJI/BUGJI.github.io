@@ -1,0 +1,37 @@
+/* layout.css - 布局样式 */
+
+/* 两栏布局容器 */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* 左侧正方形区域 */
+.square-left {
+    width: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* 右侧主体内容区域 */
+.content-right {
+    width: 50%;
+    padding: 80px 40px;
+    min-height: 100vh;
+}
+
+/* 主体内容样式调整 */
+main {
+    padding: 0;
+    min-height: auto;
+}
+
+footer {
+    margin-top: 60px;
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
